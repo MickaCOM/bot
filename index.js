@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import OpenAI from 'openai';
 
 dotenv.config();
-const openai = new OpenAI({ apiKey: `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` });
+const openai = new OpenAI({ apiKey: PROCESS.ENV.OPENAI_API_KEY });
 
 const app = express();
 const port = 3000;
@@ -67,7 +67,7 @@ app.post('/api/chat/:sessionId', async (req, res) => {
             },
             {
                 headers: {
-                    'Authorization': `Bearer ${`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`}`,
+                    'Authorization': `Bearer ${PROCESS.ENV.OPENAI_API_KEY}`,
                     'Content-Type': 'application/json'
                 }
             }
@@ -112,7 +112,7 @@ app.post('/api/upload-image/:sessionId', upload.single('image'), async (req, res
             },
             {
                 headers: {
-                    'Authorization': `Bearer ${`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`}`,
+                    'Authorization': `Bearer ${PROCESS.ENV.OPENAI_API_KEY}`,
                     'Content-Type': 'application/json'
                 }
             }
