@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import OpenAI from 'openai';
 
 dotenv.config();
-const openai = new OpenAI({ apiKey: PROCESS.ENV.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const app = express();
 const port = 3000;
@@ -67,7 +67,7 @@ app.post('/api/chat/:sessionId', async (req, res) => {
             },
             {
                 headers: {
-                    'Authorization': `Bearer ${PROCESS.ENV.OPENAI_API_KEY}`,
+                    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
                     'Content-Type': 'application/json'
                 }
             }
@@ -112,7 +112,7 @@ app.post('/api/upload-image/:sessionId', upload.single('image'), async (req, res
             },
             {
                 headers: {
-                    'Authorization': `Bearer ${PROCESS.ENV.OPENAI_API_KEY}`,
+                    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
                     'Content-Type': 'application/json'
                 }
             }
